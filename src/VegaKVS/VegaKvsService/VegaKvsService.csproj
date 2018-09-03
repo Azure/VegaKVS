@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
+    <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+    <RootNamespace>Microsoft.Vega</RootNamespace>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp2.1\win7-x64\VegaKvsService.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.1\win7-x64\VegaKvsService.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.Core" Version="1.13.1" />
+    <PackageReference Include="Microsoft.ServiceFabric" Version="6.3.162" />
+    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.2.162" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.2.162" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VegaKvsApi\VegaKvsApi.csproj" />
+    <ProjectReference Include="..\VegaReplicator\VegaReplicator.csproj" />
+  </ItemGroup>
+
+</Project>
