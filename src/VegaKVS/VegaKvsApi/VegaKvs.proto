@@ -1,0 +1,38 @@
+// Copyright (c) 2018 Microsoft Corporation. All rights reserved.
+
+syntax = "proto3";
+
+option csharp_namespace = "Microsoft.VegaKvs.Proto";
+
+package Microsoft.VegaKvs;
+
+message KeyRequest {
+    string Key = 1;
+}
+
+message Node {
+    string Key = 1;
+    bytes Value = 2;
+}
+
+message BoolResponse {
+    bool Succeeded = 1;
+}
+
+message NodeResponse {
+    bool Succeeded = 1;
+    Node Node = 2;
+}
+
+service KeyValueStore {
+    // For measuring the RPC performance
+    rpc Echo (KeyRequest) returns (BoolResponse) {}
+
+    rpc Create (Node) returns (BoolResponse) {}
+    rpc Read (KeyRequest) returns (NodeResponse) {}
+    rpc Update (Node) returns (BoolResponse) {}
+    rpc Delete (KeyRequest) returns (BoolResponse) {}
+
+    // Bidirectional streaming
+    rpc ReadStream(stream KeyRequest) returns (stream NodeResponse) {}
+}

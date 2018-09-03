@@ -1,3 +1,8 @@
+# About VegaKVS
+
+Originally being a Microsoft hackathon project, this project was created in the week of 7/22 to demonstrate the
+performance limit of Service Fabric native replication stack on .NET core platform. It implements a simple key-value
+store with CRUD operations.
 
 # Contributing
 
